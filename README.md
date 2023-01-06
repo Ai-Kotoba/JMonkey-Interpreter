@@ -85,3 +85,7 @@ $~ java -jar --enable-preview target/JMonkey-Interpreter-jar-with-dependencies.j
 
 1. Maven用的POM.xml编写实在太麻烦了，而且是初次使用Maven，命令和XML的使用都很不熟练，也很难定位依赖错误原因，造成了很大困扰。
 2. 然后是项目使用了JDK17 Preview Feature中的switch模式匹配语法糖，这是Go很早就支持的特性，其实用反射加上普通的switch就可以实现，只是过于丑陋，所以通过`--enable-preview`启用了该特性，就是这一点在Maven中造成了大量的依赖问题，最后还是查阅资料勉强将项目打包成了可执行的JAR文件。
+
+## 更新预告
+
+Java21LTS发布时会将JMonkey的JDK版本升级到JDK21，用来移除项目中的Java17 Preview Feature相关的XML配置和命令。
