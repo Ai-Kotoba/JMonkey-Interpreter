@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c02cb31-d640-4715-87e3-ab1ce27008a5" name="变更" comment="JMonkey-Interpreter Completed.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/DirectoryStructure.txt" afterDir="false" />
+    <list default="true" id="1c02cb31-d640-4715-87e3-ab1ce27008a5" name="变更" comment="Update notice: Java21LTS">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DirectoryStructure.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ast-ClassDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/object-ClassDiagram.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "http.proxy"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -85,7 +86,9 @@
       <option name="presentableId" value="Default" />
       <updated>1672973062410</updated>
       <workItem from="1672973063743" duration="873000" />
-      <workItem from="1672973949618" duration="10311000" />
+      <workItem from="1672973949618" duration="11064000" />
+      <workItem from="1672986134559" duration="439000" />
+      <workItem from="1673004207186" duration="1041000" />
     </task>
     <task id="LOCAL-00001" summary="JMonkey-Interpreter Completed.">
       <created>1672985108399</created>
@@ -94,7 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672985108399</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="JMonkey-Interpreter Completed.">
+      <created>1672985668912</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672985668912</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update notice: Java21LTS">
+      <created>1672986377891</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672986377892</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,7 +130,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="JMonkey-Interpreter Completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="JMonkey-Interpreter Completed." />
+    <MESSAGE value="Update notice: Java21LTS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update notice: Java21LTS" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
