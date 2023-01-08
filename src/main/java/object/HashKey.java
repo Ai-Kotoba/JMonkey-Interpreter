@@ -1,15 +1,17 @@
 package object;
 
-import java.lang.Object;
 import java.lang.Integer;
+import java.lang.Object;
 
 public record HashKey(ObjectType type, int value) {
     @Override
     public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
-        if (!(o instanceof HashKey hashKey))
+        }
+        if (!(o instanceof HashKey hashKey)) {
             return false;
+        }
         return type == hashKey.type && value == hashKey.value;
     }
 

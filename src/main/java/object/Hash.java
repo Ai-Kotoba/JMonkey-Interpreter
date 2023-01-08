@@ -1,7 +1,7 @@
 package object;
 
-import java.util.Map;
 import java.lang.String;
+import java.util.Map;
 
 public record Hash(Map<HashKey, HashPair> pairs) implements Object {
 

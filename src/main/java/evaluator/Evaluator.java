@@ -3,7 +3,10 @@ package evaluator;
 
 import object.ObjectType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static evaluator.Builtins.builtins;
 
@@ -65,7 +68,7 @@ public class Evaluator {
                 if (isError(right)) {
                     return right;
                 }
-                // Speechless, IDEA warns that left may be null, but does not warn right!
+                // Speechlessly, IDEA warns that left may be null, but does not warn right!
                 // noinspection ConstantConditions
                 return evalInfixExpression(actual.operator(), left, right);
             }
@@ -86,7 +89,7 @@ public class Evaluator {
                     return function;
                 }
                 List<object.Object> args = evalExpressions(actual.arguments(), env);
-                // Error will be returned as Object in List.
+                // Error will be returned as an Object in List.
                 if (args.size() == 1 && isError(args.get(0))) {
                     return args.get(0);
                 }
@@ -124,18 +127,18 @@ public class Evaluator {
 
     private static object.Object evalHashLiteral(ast.HashLiteral node, object.Environment env) {
 
-        Map<object.HashKey,object.HashPair> pairs = new HashMap<>();
-        for(var n : node.pairs().entrySet()){
+        Map<object.HashKey, object.HashPair> pairs = new HashMap<>();
+        for (var n : node.pairs().entrySet()) {
             object.Object key = eval(n.getKey(), env);
-            if (isError(key)){
-               return key;
+            if (isError(key)) {
+                return key;
             }
-            if(!(key instanceof object.HashTable hashKey)){
+            if (!(key instanceof object.HashTable hashKey)) {
                 assert key != null;
-                return  newError("unusable as hash key: %s", key.type().literal());
+                return newError("unusable as hash key: %s", key.type().literal());
             }
             object.Object value = eval(n.getValue(), env);
-            if (isError(value)){
+            if (isError(value)) {
                 return value;
             }
             object.HashKey hashed = hashKey.hashKey();
@@ -145,29 +148,29 @@ public class Evaluator {
     }
 
     private static object.Object evalIndexExpression(object.Object left, object.Object index) {
-        if(left.type() == ObjectType.ARRAY_OBJ&& index.type() == ObjectType.INTEGER_OBJ) {
-            return  evalArrayIndexExpression(left, index);
-        }else if(left.type() == ObjectType.HASH_OBJ){
+        if (left.type() == ObjectType.ARRAY_OBJ && index.type() == ObjectType.INTEGER_OBJ) {
+            return evalArrayIndexExpression(left, index);
+        } else if (left.type() == ObjectType.HASH_OBJ) {
             return evalHashIndexExpression(left, index);
-        }else{
+        } else {
             return newError("index operator not supported: %s", left.type());
         }
     }
 
     private static object.Object evalArrayIndexExpression(object.Object array, object.Object index) {
-        object.Array arrayObject = (object.Array)array;
-        int idx = ((object.Integer)index).value();
-        int max = arrayObject.elements().size()-1;
-        if (idx< 0 || idx > max) {
+        object.Array arrayObject = (object.Array) array;
+        int idx = ((object.Integer) index).value();
+        int max = arrayObject.elements().size() - 1;
+        if (idx < 0 || idx > max) {
             return NULL;
         }
         return arrayObject.elements().get(idx);
     }
 
     private static object.Object evalHashIndexExpression(object.Object hash, object.Object index) {
-        object.Hash hashObject = (object.Hash)hash;
-        if(!(index instanceof object.HashTable key)){
-            return  newError("unusable as hash key: %s", index.type());
+        object.Hash hashObject = (object.Hash) hash;
+        if (!(index instanceof object.HashTable key)) {
+            return newError("unusable as hash key: %s", index.type());
         }
         object.HashPair pair = hashObject.pairs().get(key.hashKey());
         if (pair == null) {
@@ -225,7 +228,8 @@ public class Evaluator {
         } else if (left.type() == ObjectType.STRING_OBJ && right.type() == ObjectType.STRING_OBJ) {
             return evalStringInfixExpression(operator, left, right);
         } else if (operator.equals("==")) {
-            // left and right are TRUE or FALSE,there is no problem using "==" to compare whether it is the same object.
+            // left and right are TRUE or FALSE, there is no problem using "=="
+            // to compare whether it is the same object.
             return nativeBoolToBooleanObject(left == right);
         } else if (operator.equals("!=")) {
             return nativeBoolToBooleanObject(left != right);
@@ -268,15 +272,13 @@ public class Evaluator {
             case ">" -> nativeBoolToBooleanObject(leftVal > rightVal);
             case "==" -> nativeBoolToBooleanObject(leftVal == rightVal);
             case "!=" -> nativeBoolToBooleanObject(leftVal != rightVal);
-            default -> newError("unknown operator: %s %s %s",
-                    left.type().literal(), operator, right.type().literal());
+            default -> newError("unknown operator: %s %s %s", left.type().literal(), operator, right.type().literal());
         };
     }
 
     private static object.Object evalStringInfixExpression(String operator, object.Object left, object.Object right) {
         if (!operator.equals("+")) {
-            return newError("unknown operator: %s %s %s",
-                    left.type().literal(), operator, right.type().literal());
+            return newError("unknown operator: %s %s %s", left.type().literal(), operator, right.type().literal());
         }
         String leftVal = ((object.String) left).value();
         String rightVal = ((object.String) right).value();
@@ -314,7 +316,9 @@ public class Evaluator {
             return true;
         } else if (obj == FALSE) {
             return false;
-        } else return obj != NULL;
+        } else {
+            return obj != NULL;
+        }
     }
 
     public static object.Error newError(String format, Object... args) {

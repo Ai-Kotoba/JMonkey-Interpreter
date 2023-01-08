@@ -4,8 +4,8 @@ package lexer;
 import token.Token;
 import token.TokenType;
 
-import static token.TokenType.*;
 import static java.lang.Character.*;
+import static token.TokenType.*;
 
 public class Lexer {
     private final String input;
@@ -56,7 +56,7 @@ public class Lexer {
                 }
             }
         }
-        //Necessary, at this time ch is not a blank character, skipWhitespace() will read the processed characters.
+        //Necessary, at this time, ch is not a blank character, skipWhitespace() will read the processed characters.
         readChar();
         return tok;
     }

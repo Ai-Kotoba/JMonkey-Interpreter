@@ -3,8 +3,8 @@ package object;
 import ast.BlockStatement;
 import ast.Identifier;
 
-import java.util.List;
 import java.lang.String;
+import java.util.List;
 
 public record Function(List<Identifier> parameters, BlockStatement body, Environment env) implements Object {
     @Override
@@ -14,13 +14,7 @@ public record Function(List<Identifier> parameters, BlockStatement body, Environ
 
     @Override
     public String inspect() {
-        List<String> params = parameters.stream()
-                .map(Identifier::toString)
-                .toList();
-        return "fn(" +
-                String.join(", ", params) +
-                ") {\n" +
-                body +
-                "\n}";
+        List<String> params = parameters.stream().map(Identifier::toString).toList();
+        return "fn(" + String.join(", ", params) + ") {\n" + body + "\n}";
     }
 }

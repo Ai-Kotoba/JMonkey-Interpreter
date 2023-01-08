@@ -1,8 +1,8 @@
-import ast.*;
 import ast.Boolean;
+import ast.*;
 import lexer.Lexer;
-import parser.Parser;
 import org.junit.jupiter.api.Test;
+import parser.Parser;
 
 import java.util.List;
 import java.util.Map;
@@ -523,7 +523,7 @@ class ParserTest {
     }
 
     private void testBooleanLiteral(Expression expression, java.lang.Boolean value) {
-        //class name conflict
+        //class-name conflict
         assertTrue(expression instanceof Boolean);
         Boolean booleanLiteral = (Boolean) expression;
         assertEquals(value, booleanLiteral.value());

@@ -1,8 +1,8 @@
 package object;
 
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
-import java.lang.String;
 
 public class Environment {
     final Map<String, Object> store;

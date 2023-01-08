@@ -1,8 +1,8 @@
 package evaluator;
 
 import object.Array;
-import object.Object;
 import object.Builtin;
+import object.Object;
 import object.ObjectType;
 
 import java.util.ArrayList;

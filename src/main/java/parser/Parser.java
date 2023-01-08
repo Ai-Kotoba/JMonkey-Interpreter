@@ -48,20 +48,6 @@ public class Parser {
         curToken = peekToken;
         peekToken = lexer.nextToken();
     }
-    private final Map<TokenType, PrefixParseFn> prefixParseFns = Map.ofEntries(
-            Map.entry(IDENT, Parser::parseIdentifier),
-            Map.entry(INT, Parser::parseIntegerLiteral),
-            Map.entry(STRING, Parser::parseStringLiteral),
-            Map.entry(BANG, Parser::parsePrefixExpression),
-            Map.entry(MINUS, Parser::parsePrefixExpression),
-            Map.entry(TRUE, Parser::parseBoolean),
-            Map.entry(FALSE, Parser::parseBoolean),
-            Map.entry(LPAREN, Parser::parseGroupedExpression),
-            Map.entry(IF, Parser::parseIfExpression),
-            Map.entry(FUNCTION, Parser::parseFunctionLiteral),
-            Map.entry(LBRACKET, Parser::parseArrayLiteral),
-            Map.entry(LBRACE, Parser::parseHashLiteral)
-    );
 
     private boolean curTokenIs(TokenType t) {
         return curToken.type() == t;
@@ -70,18 +56,6 @@ public class Parser {
     private boolean peekTokenIs(TokenType t) {
         return peekToken.type() == t;
     }
-    private static final Map<TokenType, InfixParseFn> infixParseFns = Map.ofEntries(
-            Map.entry(PLUS, Parser::parseInfixExpression),
-            Map.entry(MINUS, Parser::parseInfixExpression),
-            Map.entry(SLASH, Parser::parseInfixExpression),
-            Map.entry(ASTERISK, Parser::parseInfixExpression),
-            Map.entry(EQ, Parser::parseInfixExpression),
-            Map.entry(NOT_EQ, Parser::parseInfixExpression),
-            Map.entry(LT, Parser::parseInfixExpression),
-            Map.entry(GT, Parser::parseInfixExpression),
-            Map.entry(LPAREN, Parser::parseCallExpression),
-            Map.entry(LBRACKET, Parser::parseIndexExpression)
-    );
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean expectPeek(TokenType t) {
@@ -376,9 +350,8 @@ public class Parser {
             return null;
         }
         return list;
-    }
+    }    //Two functional interfaces to replace values in maps.
 
-    //Two functional interfaces to replace values in maps.
     @FunctionalInterface
     interface PrefixParseFn {
         ast.Expression parse(Parser parser);
@@ -388,4 +361,34 @@ public class Parser {
     interface InfixParseFn {
         ast.Expression parse(Parser parser, ast.Expression left);
     }
+
+    private final Map<TokenType, PrefixParseFn> prefixParseFns = Map.ofEntries(
+            Map.entry(IDENT, Parser::parseIdentifier),
+            Map.entry(INT, Parser::parseIntegerLiteral),
+            Map.entry(STRING, Parser::parseStringLiteral),
+            Map.entry(BANG, Parser::parsePrefixExpression),
+            Map.entry(MINUS, Parser::parsePrefixExpression),
+            Map.entry(TRUE, Parser::parseBoolean),
+            Map.entry(FALSE, Parser::parseBoolean),
+            Map.entry(LPAREN, Parser::parseGroupedExpression),
+            Map.entry(IF, Parser::parseIfExpression),
+            Map.entry(FUNCTION, Parser::parseFunctionLiteral),
+            Map.entry(LBRACKET, Parser::parseArrayLiteral),
+            Map.entry(LBRACE, Parser::parseHashLiteral)
+    );
+
+    private static final Map<TokenType, InfixParseFn> infixParseFns = Map.ofEntries(
+            Map.entry(PLUS, Parser::parseInfixExpression),
+            Map.entry(MINUS, Parser::parseInfixExpression),
+            Map.entry(SLASH, Parser::parseInfixExpression),
+            Map.entry(ASTERISK, Parser::parseInfixExpression),
+            Map.entry(EQ, Parser::parseInfixExpression),
+            Map.entry(NOT_EQ, Parser::parseInfixExpression),
+            Map.entry(LT, Parser::parseInfixExpression),
+            Map.entry(GT, Parser::parseInfixExpression),
+            Map.entry(LPAREN, Parser::parseCallExpression),
+            Map.entry(LBRACKET, Parser::parseIndexExpression)
+    );
+
+
 }
