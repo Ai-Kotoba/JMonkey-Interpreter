@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>JMonkey-Interpreter</artifactId>
+    <artifactId>JMonkey-Compiler</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
-        <finalName>JMonkey-Interpreter</finalName>
+        <finalName>JMonkey-Compiler</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
