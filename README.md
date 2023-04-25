@@ -2,10 +2,10 @@
 
 ## 项目来源
 
-- [Writing An Interpreter In Go](https://interpreterbook.com/)
-- [Writing A Compiler In Go](https://compilerbook.com/)
+- ["Writing An Interpreter In Go"](https://interpreterbook.com/)
+- ["Writing A Compiler In Go"](https://compilerbook.com/)
 - [《用Go语言自制解释器》](https://m.ituring.com.cn/book/2883)
-- [《用Go语言自制编译器》](https://book.douban.com/subject/35909089/)
+- [《用Go语言自制编译器》](https://m.ituring.com.cn/book/2882)
 
 ## 简述
 
@@ -81,5 +81,3 @@ $~ java -jar --enable-preview target/JMonkey-Interpreter-jar-with-dependencies.j
 ## 更新预告
 
 - Java21LTS发布时会将JMonkey的JDK版本升级到JDK21，用来移除项目中的Java17 Preview Feature相关的XML配置和命令。
-
-- 会尽快用Java实现Monkey编译器，然后发布到Github。
