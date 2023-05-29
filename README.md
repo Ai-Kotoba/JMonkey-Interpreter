@@ -13,11 +13,6 @@ Java版Monkey解释器，实现了书中前4章的内容，第5章宏的部分�
 
 写这个项目基本属于搬砖，核心代码最多几百行，其他的全在堆砌`token -> lexer -> paser -> eval`的逻辑，毫无难度可言。
 
-全书包括宏系统实现的Go源码在Releases中，可以直接点击[获取](https://github.com/Ai-Kotoba/JMonkey/releases/download/0.9/book-code-Go.zip)
-。
-
-***如果有什么问题请提issue，我会尽可能回复。***
-
 ```
                  __,__
         .--.  .-"     "-.  .--.
